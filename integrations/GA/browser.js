@@ -450,10 +450,6 @@ class GA {
     if (location) {
       ga("rudder_ga.set", "location", location);
     }
-<<<<<<< Updated upstream
-    ga("rudder_ga.send", "pageview");
-    
-=======
     window.ga("set", resetCustomDimensions);
 
     // adds more properties to pageview which will be sent
@@ -488,7 +484,6 @@ class GA {
     //   this.track(rudderElement, { nonInteraction: 1 });
     // }
     this.pageCalled = true;
->>>>>>> Stashed changes
   }
 
   isLoaded() {
