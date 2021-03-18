@@ -18,14 +18,15 @@ import * as CustomerIO from "./CustomerIO";
 // import * as Fullstory from "./Fullstory";
 // import * as TVSquared from "./TVSquared";
 import * as GA4 from "./GA4";
-// import * as MoEngage from "./MoEngage";
-// import * as Amplitude from "./Amplitude";
-// import * as Pendo from "./Pendo";
-// import * as Lytics from "./Lytics";
-// import * as Appcues from "./Appcues";
-// import * as Posthog from "./Posthog";
-// import * as Klaviyo from "./Klaviyo";
-// import * as Clevertap from "./Clevertap";
+import * as MoEngage from "./MoEngage";
+import * as Amplitude from "./Amplitude";
+import * as Pendo from "./Pendo";
+import * as Lytics from "./Lytics";
+import * as Appcues from "./Appcues";
+import * as Posthog from "./Posthog";
+import * as Klaviyo from "./Klaviyo";
+import * as Clevertap from "./Clevertap";
+import * as BingAds from "./BingAds";
 
 // the key names should match the destination.name value to keep partity everywhere
 // (config-plan name, native destination.name , exported integration name(this one below))
@@ -51,14 +52,15 @@ const integrations = {
   // FULLSTORY: Fullstory.default,
   // TVSQUARED: TVSquared.default,
   GA4: GA4.default,
-  // MOENGAGE: MoEngage.default,
-  // AM: Amplitude.default,
-  // PENDO: Pendo.default,
-  // LYTICS: Lytics.default,
-  // APPCUES: Appcues.default,
-  // POSTHOG: Posthog.default,
-  // KLAVIYO: Klaviyo.default,
-  // CLEVERTAP: Clevertap.default
+  MOENGAGE: MoEngage.default,
+  AM: Amplitude.default,
+  PENDO: Pendo.default,
+  LYTICS: Lytics.default,
+  APPCUES: Appcues.default,
+  POSTHOG: Posthog.default,
+  KLAVIYO: Klaviyo.default,
+  CLEVERTAP: Clevertap.default,
+  BINGADS: BingAds.default
 };
 
 export { integrations };
