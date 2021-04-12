@@ -30,6 +30,13 @@ export default class GA4 {
         // eslint-disable-next-line prefer-rest-params
         window.dataLayer.push(arguments);
       };
+
+    // Default ad_storage to 'denied'.
+    window.gtag("consent", "default", {
+      ad_storage: "denied",
+      wait_for_update: 1000,
+    });
+
     window.gtag("js", new Date());
 
     // This condition is not working, even after disabling page view
@@ -37,20 +44,25 @@ export default class GA4 {
     if (this.blockPageView) {
       if (this.sendUserId) {
         window.gtag("config", measurementId, {
+          cookie_expires: 33696000,
           user_id: userId,
           send_page_view: false,
         });
       } else {
         window.gtag("config", measurementId, {
+          cookie_expires: 33696000,
           send_page_view: false,
         });
       }
     } else if (this.sendUserId) {
       window.gtag("config", measurementId, {
+        cookie_expires: 33696000,
         user_id: userId,
       });
     } else {
-      window.gtag("config", measurementId);
+      window.gtag("config", measurementId, {
+        cookie_expires: 33696000,
+      });
     }
 
     ScriptLoader(
