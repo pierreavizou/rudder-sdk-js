@@ -2,8 +2,9 @@ const requiredEventParameters = {
   PromotionId: "promotion_id",
   PromotionName: "promotion_name",
   Search: "search_term",
-  ProductId: "item_id",
-  ProductName: "item_name",
+  ProductId: "id",
+  ProductName: "name",
+  OrderId: "transaction_id",
 };
 
 // To Do : Future Scope :: We can remove this one and add everything in include list.
@@ -50,18 +51,19 @@ const eventParametersConfigArray = {
   Tax: { src: "tax", dest: "tax" },
   Total: { src: "total", dest: "value" },
   CheckoutId: { src: "checkout_id", dest: "transaction_id" },
+  OrderId: { src: "order_id", dest: "transaction_id" },
   ShippingMethod: { src: "shipping_method", dest: "shipping_tier" },
+  Step: { src: "step", dest: "checkout_step" },
   PaymentMethod: { src: "payment_method", dest: "payment_type" },
 };
 
 const itemParametersConfigArray = [
-  { src: "product_id", dest: "item_id" },
-  { src: "order_id", dest: "item_id" },
-  { src: "name", dest: "item_name" },
+  { src: "product_id", dest: "id" },
+  { src: "name", dest: "name" },
   { src: "coupon", dest: "coupon" },
-  { src: "category", dest: "item_category" },
-  { src: "brand", dest: "item_brand" },
-  { src: "variant", dest: "item_variant" },
+  { src: "category", dest: "category" },
+  { src: "brand", dest: "brand" },
+  { src: "variant", dest: "variant" },
   { src: "price", dest: "price" },
   { src: "quantity", dest: "quantity" },
   { src: "position", dest: "index" },
@@ -180,6 +182,12 @@ const eventNamesConfigArray = [
       eventParametersConfigArray.Currency,
       eventParametersConfigArray.Total,
     ],
+  },
+  {
+    src: ["checkout step viewed"],
+    dest: "checkout_progress",
+    // hasItem: true,
+    includeList: [eventParametersConfigArray.Step],
   },
   {
     src: ["payment info entered"],
