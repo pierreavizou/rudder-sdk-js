@@ -123,7 +123,8 @@ function getDestinationEventProperties(
   hasItem = true
 ) {
   let destinationProperties = {};
-  Object.keys(props).forEach((key) => {
+  const copiedProps = { ...props };
+  Object.keys(copiedProps).forEach((key) => {
     destParameterConfig.forEach((param) => {
       if (key === param.src) {
         // handle case where the key needs to go inside items as well as top level params in GA4
@@ -131,12 +132,12 @@ function getDestinationEventProperties(
           destinationProperties = createItemProperty(
             destinationProperties,
             param.dest,
-            props[key]
+            copiedProps[key]
           );
         }
-        destinationProperties[param.dest] = props[key];
+        destinationProperties[param.dest] = copiedProps[key];
         // eslint-disable-next-line no-param-reassign
-        delete props[key];
+        delete copiedProps[key];
       }
     });
   });
